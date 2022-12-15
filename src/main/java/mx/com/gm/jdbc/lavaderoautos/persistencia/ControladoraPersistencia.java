@@ -1,6 +1,7 @@
 
 package mx.com.gm.jdbc.lavaderoautos.persistencia;
 
+import java.util.List;
 import mx.com.gm.jdbc.lavaderoautos.logica.Coche;
 import mx.com.gm.jdbc.lavaderoautos.logica.Duenio;
 
@@ -18,5 +19,9 @@ public class ControladoraPersistencia {
         //Crea en la BD el coche
         cocheJpa.create(coche);
         
+    }
+
+    public List<Coche> traerCoches() {
+        return cocheJpa.findCocheEntities();
     }
 }

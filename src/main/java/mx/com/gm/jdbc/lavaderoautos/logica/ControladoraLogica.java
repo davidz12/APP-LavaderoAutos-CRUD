@@ -1,5 +1,6 @@
 package mx.com.gm.jdbc.lavaderoautos.logica;
 
+import java.util.List;
 import mx.com.gm.jdbc.lavaderoautos.persistencia.ControladoraPersistencia;
 
 
@@ -25,5 +26,11 @@ public class ControladoraLogica {
         
         controlPersistencia.guardar(duenio, coche);
         
+    }
+
+    public List<Coche> traerCoches() {
+       
+        return controlPersistencia.traerCoches();
+
     }
 }

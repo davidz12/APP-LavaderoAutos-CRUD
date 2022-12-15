@@ -1,3 +1,13 @@
+D:\NetBeans-15\NetBeansProjects\lavaderoAutos\src\main\java\mx\com\gm\jdbc\lavaderoautos\persistencia\exceptions\NonexistentEntityException.java
+D:\NetBeans-15\NetBeansProjects\lavaderoAutos\src\main\java\mx\com\gm\jdbc\lavaderoautos\persistencia\exceptions\PreexistingEntityException.java
+D:\NetBeans-15\NetBeansProjects\lavaderoAutos\src\main\java\mx\com\gm\jdbc\lavaderoautos\persistencia\DuenioJpaController.java
+D:\NetBeans-15\NetBeansProjects\lavaderoAutos\src\main\java\mx\com\gm\jdbc\lavaderoautos\logica\ControladoraLogica.java
+D:\NetBeans-15\NetBeansProjects\lavaderoAutos\src\main\java\mx\com\gm\jdbc\lavaderoautos\persistencia\ControladoraPersistencia.java
+D:\NetBeans-15\NetBeansProjects\lavaderoAutos\src\main\java\mx\com\gm\jdbc\lavaderoautos\persistencia\CocheJpaController.java
 D:\NetBeans-15\NetBeansProjects\lavaderoAutos\src\main\java\mx\com\gm\jdbc\lavaderoautos\gui\Lavadero.java
 D:\NetBeans-15\NetBeansProjects\lavaderoAutos\src\main\java\mx\com\gm\jdbc\lavaderoautos\LavaderoAutos.java
 D:\NetBeans-15\NetBeansProjects\lavaderoAutos\src\main\java\mx\com\gm\jdbc\lavaderoautos\gui\CargaDatos.java
+D:\NetBeans-15\NetBeansProjects\lavaderoAutos\src\main\java\mx\com\gm\jdbc\lavaderoautos\gui\VerDatos.java
+D:\NetBeans-15\NetBeansProjects\lavaderoAutos\src\main\java\mx\com\gm\jdbc\lavaderoautos\persistencia\exceptions\IllegalOrphanException.java
+D:\NetBeans-15\NetBeansProjects\lavaderoAutos\src\main\java\mx\com\gm\jdbc\lavaderoautos\logica\Coche.java
+D:\NetBeans-15\NetBeansProjects\lavaderoAutos\src\main\java\mx\com\gm\jdbc\lavaderoautos\logica\Duenio.java
