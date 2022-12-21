@@ -5,6 +5,8 @@
 package mx.com.gm.jdbc.lavaderoautos.gui;
 
 import java.util.List;
+import javax.swing.JDialog;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import mx.com.gm.jdbc.lavaderoautos.logica.Coche;
 import mx.com.gm.jdbc.lavaderoautos.logica.ControladoraLogica;
@@ -70,8 +72,18 @@ public class VerDatos extends javax.swing.JFrame {
         jScrollPane1.setViewportView(tablaCoches);
 
         btnEditar.setText("Editar");
+        btnEditar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEditarActionPerformed(evt);
+            }
+        });
 
         btnEliminar1.setText("Eliminar");
+        btnEliminar1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEliminar1ActionPerformed(evt);
+            }
+        });
 
         jLabel2.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         jLabel2.setText("Datos de coches:");
@@ -149,6 +161,60 @@ public class VerDatos extends javax.swing.JFrame {
         
     }//GEN-LAST:event_formWindowOpened
 
+    private void btnEliminar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminar1ActionPerformed
+        //Controlo que la tabla no este vacia
+        if(tablaCoches.getRowCount() > 0){
+            //Controlo que haya seleccionado un registro
+            //Si es -1 es porque no selecciono nada
+            if (tablaCoches.getSelectedRow() != -1) {
+                //Obtengo el id del registro a eliminar
+                int num_cliente = Integer.parseInt(String.valueOf(tablaCoches.getValueAt(tablaCoches.getSelectedRow(), 0)));
+            
+            
+            //Llamo al metodo borrar
+            controlLogica.eliminarRegistro(num_cliente);
+            
+            mostrarMensaje("Registro eliminado correctamente", "Info", "Borrado de registro.");
+            
+            //cargo la tabla asi se actualiza luego del borrado.
+            cargarTabla();
+            }
+            else {
+                mostrarMensaje("No selecciono ningun registro", "Error", "Error al eliminar");
+            }
+        }
+        else {
+            mostrarMensaje("No hay registros para eliminar en la tabla", "Error", "Error al eliminar");
+        }
+    }//GEN-LAST:event_btnEliminar1ActionPerformed
+
+    private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
+        //Controlo que la tabla no este vacia
+        if(tablaCoches.getRowCount() > 0){
+            //Controlo que haya seleccionado un registro
+            //Si es -1 es porque no selecciono nada
+            if (tablaCoches.getSelectedRow() != -1) {
+                //obtengo id a editar
+                int num_cliente = Integer.parseInt(String.valueOf(tablaCoches.getValueAt(tablaCoches.getSelectedRow(), 0)));
+                
+                ModificarDatos pantallaModificar = new ModificarDatos(num_cliente);
+                pantallaModificar.setVisible(true);
+                pantallaModificar.setLocationRelativeTo(null);
+                
+                this.dispose();
+                
+            }
+            else {
+                mostrarMensaje("No selecciono ningun registro", "Error", "Error al editar");
+            }
+        }
+        else {
+            mostrarMensaje("No hay registros para editar en la tabla", "Error", "Error al editar");
+        }
+        
+        
+    }//GEN-LAST:event_btnEditarActionPerformed
+
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -183,11 +249,27 @@ public class VerDatos extends javax.swing.JFrame {
         
         if (listaCoches != null) {
             for(Coche coche : listaCoches){
-                Object[] objeto = {coche.getNum_cliente(), coche.getMarca(), coche.getModelo(), coche.getColor(),coche.getEsChocado() ,coche.getTratamientoEspecial(), coche.getUnDuenio().getNombre(), coche.getUnDuenio().getCelDuenio()};
+                
+                //Se utiliza la clase "Object" para que se pueda meter datos de varios tipos en el vector.
+                Object[] objeto = {coche.getNum_cliente(), coche.getMarca(), coche.getModelo(), coche.getColor(), coche.getEsChocado(), coche.getTratamientoEspecial(), coche.getUnDuenio().getNombre(), coche.getUnDuenio().getCelDuenio()};
             
                 modeloTabla.addRow(objeto);
             }
         }
         tablaCoches.setModel(modeloTabla);
+    }
+
+    private void mostrarMensaje(String mensaje, String tipo, String titulo) {
+        
+        JOptionPane optionPane = new JOptionPane(mensaje);
+        if(tipo.equals("Info")) {
+            optionPane.setMessageType(JOptionPane.INFORMATION_MESSAGE);
+        }
+        else if(tipo.equals("Error")){
+            optionPane.setMessageType(JOptionPane.ERROR_MESSAGE);
+        }
+        JDialog dialog = optionPane.createDialog(titulo);
+        dialog.setAlwaysOnTop(true);
+        dialog.setVisible(true);
     }
 }

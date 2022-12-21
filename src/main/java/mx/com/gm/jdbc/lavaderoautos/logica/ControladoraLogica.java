@@ -33,4 +33,40 @@ public class ControladoraLogica {
         return controlPersistencia.traerCoches();
 
     }
+
+    public void eliminarRegistro(int num_cliente) {
+        controlPersistencia.eliminarRegistro(num_cliente);
+    }
+
+    public Coche traerCoche(int num_cliente) {
+        return controlPersistencia.traerCoche(num_cliente);
+    }
+
+    public void modificarCoche(Coche coche, String marca, String modelo, String color, String observaciones, String chocado, String tratamiento, String nombreDuenio, String celDuenio) {
+    
+        coche.setMarca(marca);
+        coche.setModelo(modelo);
+        coche.setColor(color);
+        coche.setObservaciones(observaciones);
+        coche.setEsChocado(chocado);
+        coche.setTratamientoEspecial(tratamiento);
+        
+        controlPersistencia.modificarCoche(coche);
+        
+        Duenio duenio = this.buscarDuenio(coche.getUnDuenio().getId_duenio());
+        duenio.setCelDuenio(celDuenio);
+        duenio.setNombre(nombreDuenio);
+        
+        this.modificarDuenio(duenio);
+        
+    
+    }
+
+    private Duenio buscarDuenio(int id_duenio) {
+        return controlPersistencia.traerDuenio(id_duenio);
+    }
+
+    private void modificarDuenio(Duenio duenio) {
+        controlPersistencia.modificarDuenio(duenio);
+    }
 }
